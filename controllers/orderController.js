@@ -4,8 +4,8 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 //config variables
-const currency = "usd";
-const deliveryCharge = 5;
+const currency = "THB";
+const deliveryCharge = 2;
 const frontend_URL = 'http://localhost:5173';
 
 // Placing User Order for Frontend using stripe
@@ -36,7 +36,7 @@ const placeOrder = async (req, res) => {
             price_data: {
                 currency: currency,
                 product_data: {
-                    name: "Delivery Charge"
+                    name: "ค่าบริการ"
                 },
                 unit_amount: deliveryCharge * 100
             },
@@ -54,7 +54,7 @@ const placeOrder = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Error" })
+        res.json({ success: false, message: "เกิดข้อผิดพลาด" })
     }
 }
 
